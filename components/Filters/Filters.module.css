@@ -15,14 +15,15 @@
 }
 .type {
   display: flex;
+  flex-direction: column;
 }
-.subtitleEquipment {
+.subtitle {
   font-weight: 600;
   font-size: 20px;
   line-height: 1.2;
   color: var(--color-deep-blue);
 }
-.subtitleEquipment::after {
+.subtitle::after {
   content: "";
   display: block;
   width: 360px;
@@ -30,9 +31,12 @@
   background-color: var(--color-light-gray-blue);
   margin-top: 24px;
 }
-.equipmentList {
+.cardList {
   display: flex;
   flex-wrap: wrap;
   gap: 8px 12px;
   margin-top: 24px;
+}
+.iconDescription {
+  text-align: center;
 }

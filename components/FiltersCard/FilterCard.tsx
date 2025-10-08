@@ -1,5 +1,5 @@
-import css from "./EquipmentCard.module.css";
-export default function EquipmentsCard({
+import css from "./FilterCard.module.css";
+export default function FilterCard({
   children,
 }: {
   children: React.ReactNode;
