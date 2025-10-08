@@ -1,0 +1,38 @@
+.title {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-dark-gray);
+}
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.equipment {
+  display: flex;
+  flex-direction: column;
+}
+.type {
+  display: flex;
+}
+.subtitleEquipment {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--color-deep-blue);
+}
+.subtitleEquipment::after {
+  content: "";
+  display: block;
+  width: 360px;
+  height: 1px;
+  background-color: var(--color-light-gray-blue);
+  margin-top: 24px;
+}
+.equipmentList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-top: 24px;
+}

@@ -1,0 +1,15 @@
+.card {
+  width: 112px;
+  height: 96px;
+  border: 1px solid var(--color-light-gray-blue);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.card:hover {
+  border-color: var(--color-warm-red);
+  cursor: pointer;
+}
