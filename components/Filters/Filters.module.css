@@ -40,3 +40,21 @@
 .iconDescription {
   text-align: center;
 }
+.button {
+  display: inline-block;
+  background-color: var(--color-warm-red);
+  border: none;
+  border-radius: 200px;
+  color: var(--color-white);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  padding: 16px 48px;
+  cursor: pointer;
+  width: 166px;
+  margin-top: 8px;
+}
+.button:hover {
+  background-color: var(--color-deep-red);
+}

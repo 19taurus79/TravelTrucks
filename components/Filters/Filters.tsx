@@ -54,6 +54,7 @@ export default function Filters() {
           </FilterCard>
         </div>
       </section>
+      <button className={css.button}>Search</button>
     </section>
   );
 }
