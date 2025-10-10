@@ -4,49 +4,59 @@ import HeartIcon from "../../assets/heart.svg";
 import StarIcon from "../../assets/star.svg";
 import MapIcon from "../../assets/Map.svg";
 import Badge from "../Badge/Badge";
-import AutomaticBadge from "../../assets/automatic_badge.svg";
-export default function TrackCard() {
+
+import { Camper } from "@/types/types";
+import { badgeMap } from "@/helpers/badgeMap";
+
+interface TrackCardProps {
+  camper: Camper;
+}
+
+export default function TrackCard({ camper }: TrackCardProps) {
   return (
     <article className={css.container}>
       <div className={css.photoContainer}>
         <Image
-          src="/img/PicForTest.jpg"
-          alt="Track card image"
+          src={camper.gallery[0]?.original}
+          alt={camper.name}
           className={css.photo}
           fill
+          sizes="292px"
         />
       </div>
       <div className={css.infoContainer}>
         <div>
           <div className={css.title}>
-            <h2>Title</h2>
+            <h2>{camper.name}</h2>
             <div className={css.priceWrapper}>
-              <p>Price</p>
+              <p>€{camper.price}</p>
               <HeartIcon />
             </div>
           </div>
           <div className={css.details}>
             <div className={css.reviewsWrapper}>
               <StarIcon />
-              <p>Reviews</p>
+              <p>
+                {camper.rating} ({camper.reviews.length} Reviews)
+              </p>
             </div>
             <div className={css.reviewsWrapper}>
               <MapIcon />
-              <p>Location</p>
+              <p>{camper.location}</p>
             </div>
           </div>
         </div>
         <div className={css.supporting}>
-          <p className={css.supportingText}>
-            Embrace simplicity and freedom with the Mavericks panel truck
-            Embrace simplicity and freedom with the Mavericks panel truck
-          </p>
+          <p className={css.supportingText}>{camper.description}</p>
         </div>
         <div className={css.badgesContainer}>
-          <Badge>
-            <AutomaticBadge />
-            <p>Automatic</p>
-          </Badge>
+          {badgeMap.map(({ key, icon, label }) =>
+            camper[key as keyof Camper] ? (
+              <Badge key={key}>
+                {icon} <span>{label}</span>
+              </Badge>
+            ) : null
+          )}
         </div>
         <button className={css.btn}>Show more</button>
       </div>

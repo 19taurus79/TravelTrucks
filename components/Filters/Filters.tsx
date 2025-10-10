@@ -28,7 +28,7 @@ export default function Filters() {
             <p className={css.iconDescription}>Kitchen</p>
           </FilterCard>
           <FilterCard>
-            <TVIcon />
+            <TVIcon width={32} height={32} />
             <p className={css.iconDescription}>TV</p>
           </FilterCard>
           <FilterCard>
