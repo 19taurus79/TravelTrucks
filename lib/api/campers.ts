@@ -11,13 +11,39 @@ type PaginatedCampersResponse = {
   total: number;
 };
 
-export const getCampers = async ({ pageParam = 1 }): Promise<Camper[]> => {
-  const response = await api.get<PaginatedCampersResponse>("/campers", {
-    params: {
-      page: pageParam,
-      limit: 4,
-    },
-  });
-  // Return only the array of items from the response object
-  return response.data.items;
+type getCampersProps = {
+  pageParam?: number;
+  activeFilters: {
+    equipment: string[];
+    vehicleType: string;
+    location: string;
+  };
+};
+
+export const getCampers = async ({
+  pageParam = 1,
+  activeFilters,
+}: getCampersProps): Promise<PaginatedCampersResponse> => {
+  const params: any = { page: pageParam, limit: 4 };
+
+  if (activeFilters?.location) {
+    params.location = activeFilters.location;
+  }
+
+  if (activeFilters?.vehicleType) {
+    params.form = activeFilters.vehicleType;
+  }
+
+  if (activeFilters?.equipment?.length > 0) {
+    activeFilters.equipment.forEach((item) => {
+      if (item === "automatic") {
+        params.transmission = "automatic";
+      } else {
+        params[item] = true;
+      }
+    });
+  }
+
+  const response = await api.get<PaginatedCampersResponse>("/campers", { params });
+  return response.data;
 };

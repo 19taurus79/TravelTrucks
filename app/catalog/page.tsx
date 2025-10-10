@@ -7,7 +7,10 @@ import { Fragment } from "react";
 import LoadMoreBtn from "@/components/LoadMoreBtn/LoadMoreBtn";
 import ScrollToTopBtn from "@/components/ScrollToTopBtn/ScrollToTopBtn";
 
+import { useFilterStore } from "@/store/filterStore";
+
 export default function Catalog() {
+  const { activeFilters } = useFilterStore();
   const {
     data,
     error,
@@ -16,11 +19,11 @@ export default function Catalog() {
     isFetchingNextPage,
     status,
   } = useInfiniteQuery({
-    queryKey: ["campers"],
-    queryFn: getCampers,
+    queryKey: ["campers", activeFilters],
+    queryFn: ({ pageParam }) => getCampers({ pageParam, activeFilters }),
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages) => {
-      if (lastPage.length < 4) {
+      if (lastPage.items.length < 4) {
         return undefined;
       }
       return allPages.length + 1;
@@ -41,7 +44,7 @@ export default function Catalog() {
       <div className={css.container}>
         {data.pages.map((page, i) => (
           <Fragment key={i}>
-            {page.map((camper) => (
+            {page.items.map((camper) => (
               <TrackCard key={camper.id} camper={camper} />
             ))}
           </Fragment>

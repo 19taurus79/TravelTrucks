@@ -13,14 +13,10 @@
 .inputContainer {
   position: relative;
 }
-.icon {
-  position: absolute;
-  top: 18px;
-  left: 18px;
-}
 
 .input {
-  padding-left: 48px;
+  padding-left: 48px; /* Space for map icon */
+  padding-right: 48px; /* Space for clear button */
   width: 360px;
   height: 56px;
   border-radius: 12px;
@@ -29,4 +25,30 @@
 }
 .input:focus {
   outline: none;
+}
+
+.icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.clearButton {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: var(--color-dark-gray);
+  padding: 0;
+  line-height: 1;
+}
+
+.clearButton:hover {
+  color: var(--color-warm-red);
 }
