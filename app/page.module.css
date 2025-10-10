@@ -1,6 +1,5 @@
 .home {
   height: calc(100vh - 72px);
-
   position: relative;
 }
 .titleContainer {
@@ -36,4 +35,8 @@
 }
 .button:hover {
   background-color: var(--color-deep-red);
+}
+.background {
+  object-fit: cover;
+  z-index: -1;
 }

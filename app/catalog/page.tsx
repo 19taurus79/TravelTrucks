@@ -1,5 +1,5 @@
-import Sidebar from "@/components/Sidebar/Sidebar";
+import TrackCard from "@/components/TrackCard/TrackCard";
 
 export default function Catalog() {
-  return <Sidebar />;
+  return <TrackCard />;
 }

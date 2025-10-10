@@ -29,7 +29,8 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
-h1 {
+h1,
+h2 {
   margin: 0;
 }
 p {

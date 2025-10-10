@@ -9,10 +9,7 @@ export default function Home() {
         alt="Hero background"
         fill
         priority
-        style={{
-          objectFit: "cover",
-          zIndex: -1,
-        }}
+        className={css.background}
       />
       <div className={css.titleContainer}>
         <h1 className={css.title}>Campers of your dreams</h1>

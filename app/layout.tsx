@@ -15,7 +15,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "TravelTrucks",
   description:
-    "TravelTrucks offers easy camper rentals with fast booking and secure payments for your perfect road trip.",
+    "TravelTrucks offers easy camper rentals with fast booking for your perfect road trip.",
 };
 
 export default function RootLayout({
