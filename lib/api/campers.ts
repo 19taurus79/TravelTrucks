@@ -20,11 +20,23 @@ type getCampersProps = {
   };
 };
 
+type CamperApiParams = {
+  page: number;
+  limit: number;
+  location?: string;
+  form?: string;
+  transmission?: string;
+  AC?: boolean;
+  kitchen?: boolean;
+  TV?: boolean;
+  bathroom?: boolean;
+};
+
 export const getCampers = async ({
   pageParam = 1,
   activeFilters,
 }: getCampersProps): Promise<PaginatedCampersResponse> => {
-  const params: any = { page: pageParam, limit: 4 };
+  const params: CamperApiParams = { page: pageParam, limit: 4 };
 
   if (activeFilters?.location) {
     params.location = activeFilters.location;
@@ -36,10 +48,24 @@ export const getCampers = async ({
 
   if (activeFilters?.equipment?.length > 0) {
     activeFilters.equipment.forEach((item) => {
-      if (item === "automatic") {
-        params.transmission = "automatic";
-      } else {
-        params[item] = true;
+      switch (item) {
+        case "ac":
+          params.AC = true;
+          break;
+        case "automatic":
+          params.transmission = "automatic";
+          break;
+        case "kitchen":
+          params.kitchen = true;
+          break;
+        case "tv":
+          params.TV = true;
+          break;
+        case "bathroom":
+          params.bathroom = true;
+          break;
+        default:
+          break;
       }
     });
   }
